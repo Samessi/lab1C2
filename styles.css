@@ -100,3 +100,18 @@ footer {
 .save{
     background-color: #f4a261;
 }
+.add {
+    display: inline-block; /* Asegura que sea visible */
+    padding: 10px 15px;
+    background-color: #007bff; /* Azul */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.add:hover {
+    background-color: #0056b3; /* Azul oscuro */
+}
+
+
