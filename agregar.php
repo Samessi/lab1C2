@@ -1,40 +1,56 @@
-<?php include "base.php"?>
+<?php include "base.php"; ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Agregar Jugador</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<form action="" method="post">
-    <label for="">Nombre</label>
-    <input type="" name="nom" id="">
-    <label for="">Edad</label>
-    <input type="" name="ed" id="">
-    <label for="">Posicion</label>
-    <input type="" name="pos" id="">
-    <label for="">Nacionalidad</label>
-    <input type="" name="nac" id="">
 
+<header>
+    <h1>Agregar Nuevo Jugador</h1>
+</header>
 
-    <button type="submit">Registrar</button>
-</form>
+<main>
+    <form action="" method="post" class="form-container">
+        <label for="nom">Nombre</label>
+        <input type="text" name="nom" id="nom" required>
+
+        <label for="ed">Edad</label>
+        <input type="number" name="ed" id="ed" required>
+
+        <label for="pos">Posición</label>
+        <input type="text" name="pos" id="pos" required>
+
+        <label for="nac">Nacionalidad</label>
+        <input type="text" name="nac" id="nac" required>
+
+        <button type="submit" class="btn add">Registrar</button>
+        <a href="index.php" class="btn cancel">Cancelar</a>
+    </form>
+</main>
+
+<footer>
+    <p>&copy; <?php echo date("Y"); ?> FC Barcelona - Todos los derechos reservados.</p>
+</footer>
+
 <?php
-  if($_SERVER['REQUEST_METHOD']=="POST"){
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $nombre = $_POST["nom"];
-    $Edad = $_POST["ed"];
-    $Posicion = $_POST["pos"];
-    $Nacionalidad = $_POST["nac"];
+    $edad = $_POST["ed"];
+    $posicion = $_POST["pos"];
+    $nacionalidad = $_POST["nac"];
 
     $insercion = $conexion->prepare("INSERT INTO equipos(jug_Nom, Jug_edad, Jug_posicion, Jug_nacion) 
-                     VALUES(?,?,?,?)");
-                     $insercion->bind_param("ssss", $nombre, $Edad, $Posicion,$Nacionalidad);
-                     $insercion->execute();
-                     header(header: "Location:index.php");
-  }
-
-
+                                     VALUES(?,?,?,?)");
+    $insercion->bind_param("ssss", $nombre, $edad, $posicion, $nacionalidad);
+    $insercion->execute();
+    header("Location: index.php");
+    exit();
+}
 ?>
+
 </body>
 </html>
