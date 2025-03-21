@@ -14,7 +14,7 @@
 </header>
 
 <main>
-    <a href="agregar.php" class="btn add">Agregar nuevo jugador</a>
+    <a href="agregar.php" class="add">Agregar nuevo jugador</a>
 
     <table>
         <thead>
